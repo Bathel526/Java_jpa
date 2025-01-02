@@ -19,17 +19,20 @@ public class VisitEntity {
 	@Column(nullable = false)
 	private LocalDateTime time;
 
+	@ManyToOne
+	@JoinColumn(name = "DOCTOR_ID")
+	private DoctorEntity doctor;
+
+	@ManyToOne
+	@JoinColumn(name = "PATIENT_ID")
+	private PatientEntity patient;
+
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "VISIT_ID")
 	private List<MedicalTreatmentEntity> medicalTreatments;
 
-	public List<MedicalTreatmentEntity> getMedicalTreatments() {
-		return medicalTreatments;
-	}
+	// Setters and Getters:
 
-	public void setMedicalTreatments(List<MedicalTreatmentEntity> medicalTreatments) {
-		this.medicalTreatments = medicalTreatments;
-	}
 
 	public Long getId() {
 		return id;
@@ -55,4 +58,27 @@ public class VisitEntity {
 		this.time = time;
 	}
 
+	public DoctorEntity getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(DoctorEntity doctor) {
+		this.doctor = doctor;
+	}
+
+	public PatientEntity getPatient() {
+		return patient;
+	}
+
+	public void setPatient(PatientEntity patient) {
+		this.patient = patient;
+	}
+
+	public List<MedicalTreatmentEntity> getMedicalTreatments() {
+		return medicalTreatments;
+	}
+
+	public void setMedicalTreatments(List<MedicalTreatmentEntity> medicalTreatments) {
+		this.medicalTreatments = medicalTreatments;
+	}
 }

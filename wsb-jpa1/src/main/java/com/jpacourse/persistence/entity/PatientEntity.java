@@ -1,4 +1,5 @@
 package com.jpacourse.persistence.entity;
+import com.jpacourse.persistence.enums.Gender;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,8 +34,11 @@ public class PatientEntity {
 	@Past
 	private LocalDate dateOfBirth;
 
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "PATIENT_ID")
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<VisitEntity> visits;
 
 	@ManyToMany
@@ -45,21 +49,8 @@ public class PatientEntity {
 	)
 	private List<AddressEntity> addresses;
 
-	public List<AddressEntity> getAddresses() {
-		return addresses;
-	}
+	// Getters and Setters:
 
-	public void setAddresses(List<AddressEntity> addresses) {
-		this.addresses = addresses;
-	}
-
-	public List<VisitEntity> getVisits() {
-		return visits;
-	}
-
-	public void setVisits(List<VisitEntity> visits) {
-		this.visits = visits;
-	}
 
 	public Long getId() {
 		return id;
@@ -117,4 +108,27 @@ public class PatientEntity {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public List<VisitEntity> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<VisitEntity> visits) {
+		this.visits = visits;
+	}
+
+	public List<AddressEntity> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressEntity> addresses) {
+		this.addresses = addresses;
+	}
 }

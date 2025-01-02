@@ -14,13 +14,13 @@ values
     (1, 2),
     (2, 1);
 
-insert into patient (first_name, last_name, telephone_number, email, patient_number, date_of_birth)
+insert into patient (first_name, last_name, telephone_number, email, patient_number, date_of_birth, gender)
 values
-    ('Alice', 'Williams', '555-1111', 'alice.williams@example.com', 'PN12345', '1990-01-15'),
-    ('Bob', 'Johnson', '555-2222', 'bob.johnson@example.com', 'PN12346', '1985-02-20'),
-    ('Charlie', 'Davis', '555-3333', 'charlie.davis@example.com', 'PN12347', '1992-03-25'),
-    ('David', 'Miller', '555-4444', 'david.miller@example.com', 'PN12348', '1991-04-30'),
-    ('Eva', 'Garcia', '555-5555', 'eva.garcia@example.com', 'PN12349', '1988-05-10');
+    ('Alice', 'Williams', '555-1111', 'alice.williams@example.com', 'PN12345', '1990-01-15', 'FEMALE'),
+    ('Bob', 'Johnson', '555-2222', 'bob.johnson@example.com', 'PN12346', '1985-02-20', 'MALE'),
+    ('Charlie', 'Davis', '555-3333', 'charlie.davis@example.com', 'PN12347', '1992-03-25', 'MALE'),
+    ('David', 'Miller', '555-4444', 'david.miller@example.com', 'PN12348', '1991-04-30', 'MALE'),
+    ('Eva', 'Garcia', '555-5555', 'eva.garcia@example.com', 'PN12349', '1988-05-10', 'FEMALE');
 
 insert into patient_to_address (patient_id, address_id)
 values

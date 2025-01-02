@@ -1,5 +1,4 @@
 package com.jpacourse.dto;
-
 import java.io.Serializable;
 
 public class AddressTO implements Serializable
@@ -13,6 +12,8 @@ public class AddressTO implements Serializable
     private String addressLine2;
 
     private String postalCode;
+
+    // Setters and Getters:
 
     public Long getId() {
         return id;

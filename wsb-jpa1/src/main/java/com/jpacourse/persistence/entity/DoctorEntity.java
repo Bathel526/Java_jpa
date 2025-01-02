@@ -1,5 +1,4 @@
 package com.jpacourse.persistence.entity;
-
 import com.jpacourse.persistence.enums.Specialization;
 
 import javax.persistence.*;
@@ -32,8 +31,10 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
-	@JoinColumn(name = "DOCTOR_ID")
+	@OneToMany(
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY
+	)
 	private List<VisitEntity> visits;
 
 	@ManyToMany
@@ -44,21 +45,7 @@ public class DoctorEntity {
 	)
 	private List<AddressEntity> addresses;
 
-	public List<AddressEntity> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<AddressEntity> addresses) {
-		this.addresses = addresses;
-	}
-
-	public List<VisitEntity> getVisits() {
-		return visits;
-	}
-
-	public void setVisits(List<VisitEntity> visits) {
-		this.visits = visits;
-	}
+	// Setters and Getters:
 
 	public Long getId() {
 		return id;
@@ -116,4 +103,19 @@ public class DoctorEntity {
 		this.specialization = specialization;
 	}
 
+	public List<VisitEntity> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<VisitEntity> visits) {
+		this.visits = visits;
+	}
+
+	public List<AddressEntity> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<AddressEntity> addresses) {
+		this.addresses = addresses;
+	}
 }
