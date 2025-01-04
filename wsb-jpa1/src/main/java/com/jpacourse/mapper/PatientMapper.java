@@ -1,7 +1,10 @@
 package com.jpacourse.mapper;
 import com.jpacourse.dto.PatientTO;
+import com.jpacourse.dto.VisitSimpleTO;
 import com.jpacourse.persistence.entity.PatientEntity;
+import com.jpacourse.persistence.entity.VisitEntity;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class PatientMapper {
@@ -21,10 +24,12 @@ public class PatientMapper {
         patientTO.setGender(patientEntity.getGender());
 
         patientTO.setVisits(
-                patientEntity.getVisits()
-                        .stream()
-                        .map(VisitSimpleMapper::mapToTO)
-                        .collect(Collectors.toList())
+                patientEntity.getVisits() == null ?
+                        List.of() :
+                        patientEntity.getVisits()
+                                .stream()
+                                .map(VisitSimpleMapper::mapToTO)
+                                .collect(Collectors.toList())
         );
 
         return patientTO;

@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Transactional
 public class PatientServiceImpl implements PatientService
@@ -38,4 +41,22 @@ public class PatientServiceImpl implements PatientService
         }
         return PatientMapper.mapToTO(patientEntity);
     }
+
+    @Override
+    public List<PatientTO> findAllPatients() {
+        List<PatientEntity> patientEntities = patientDao.findAll();
+        return patientEntities.stream()
+                .map(PatientMapper::mapToTO)
+                .collect(Collectors.toList());
+    }
+
+
+    @Override
+    public PatientTO addPatient(PatientTO patientTO) {
+        PatientEntity patientEntity = PatientMapper.mapToEntity(patientTO);
+        patientDao.save(patientEntity);
+        return PatientMapper.mapToTO(patientEntity);
+    }
+
 }
+

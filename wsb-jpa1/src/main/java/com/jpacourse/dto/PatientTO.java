@@ -23,7 +23,7 @@ public class PatientTO
 
     private List<VisitSimpleTO> visits;
     
-    private List<AddressTO> addresses;
+    //private List<AddressTO> addresses;
 
     // Setters and Getters:
 
@@ -99,11 +99,4 @@ public class PatientTO
         this.visits = visits;
     }
 
-    public List<AddressTO> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<AddressTO> addresses) {
-        this.addresses = addresses;
-    }
 }

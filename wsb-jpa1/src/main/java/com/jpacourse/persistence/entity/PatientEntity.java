@@ -38,6 +38,7 @@ public class PatientEntity {
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
+	@JoinColumn(name = "PATIENT_ID")
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<VisitEntity> visits;
 

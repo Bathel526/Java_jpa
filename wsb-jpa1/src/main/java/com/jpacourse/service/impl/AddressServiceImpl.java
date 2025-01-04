@@ -27,4 +27,5 @@ public class AddressServiceImpl implements AddressService
         final AddressEntity entity = addressDao.findOne(id);
         return AddressMapper.mapToTO(entity);
     }
+
 }

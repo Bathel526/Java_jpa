@@ -20,11 +20,9 @@ public class VisitEntity {
 	private LocalDateTime time;
 
 	@ManyToOne
-	@JoinColumn(name = "DOCTOR_ID")
 	private DoctorEntity doctor;
 
 	@ManyToOne
-	@JoinColumn(name = "PATIENT_ID")
 	private PatientEntity patient;
 
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, fetch = FetchType.LAZY)

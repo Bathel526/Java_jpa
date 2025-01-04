@@ -5,12 +5,11 @@ import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.rest.exception.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 
-@Transactional
 @Repository
 public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements PatientDao {
 
@@ -20,6 +19,7 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         this.entityManager = entityManager;
     }
 
+    @Transactional
     @Override
     public void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime time, String description){
         PatientEntity patientEntity = entityManager.find(PatientEntity.class, patientId);

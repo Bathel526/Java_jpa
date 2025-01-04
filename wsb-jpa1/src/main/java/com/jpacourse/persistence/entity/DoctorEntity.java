@@ -31,6 +31,7 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
+	@JoinColumn(name = "DOCTOR_ID")
 	@OneToMany(
 			cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY

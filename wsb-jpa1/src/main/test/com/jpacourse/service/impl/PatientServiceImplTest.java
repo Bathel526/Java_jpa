@@ -1,19 +1,18 @@
 package com.jpacourse.service.impl;
-
-import com.jpacourse.dto.PatientTO;
 import com.jpacourse.persistence.dao.PatientDao;
 import com.jpacourse.persistence.dao.VisitDao;
-import com.jpacourse.persistence.entity.AddressEntity;
+import com.jpacourse.dto.PatientTO;
 import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.persistence.enums.Gender;
 import com.jpacourse.service.PatientService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -21,7 +20,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -38,8 +36,10 @@ class PatientServiceImplTest {
 
     private PatientEntity patient;
 
+
+    @Transactional
     @Test
-    void getShouldFindPatientByID() {
+    void testShouldFindPatientByID() {
         PatientEntity patientEntity = patientDao.findOne(1L);
         // then
         assertThat(patientEntity).isNotNull();
@@ -81,4 +81,38 @@ class PatientServiceImplTest {
         assertThat(visitDao.findOne(patient.getVisits().get(0).getId())).isNull();
         assertThat(visitDao.findOne(patient.getVisits().get(1).getId())).isNull();
     }
+
+
+    @Transactional
+    @Test
+    void testAddPatient() {
+        // Given
+        PatientTO patientTO = new PatientTO();
+        patientTO.setFirstName("Alice");
+        patientTO.setLastName("Johnson");
+        patientTO.setEmail("alice.johnson@example.com");
+        patientTO.setTelephoneNumber("987654321");
+        patientTO.setDateOfBirth(LocalDate.of(1992, 5, 10));
+        patientTO.setGender(Gender.valueOf("FEMALE"));
+        patientTO.setPatientNumber("987654321");
+
+        // When
+        PatientTO addedPatientTO = patientService.addPatient(patientTO);
+
+        // Then
+        assertThat(addedPatientTO).isNotNull();
+        assertThat(addedPatientTO.getFirstName()).isEqualTo("Alice");
+        assertThat(addedPatientTO.getLastName()).isEqualTo("Johnson");
+        assertThat(addedPatientTO.getEmail()).isEqualTo("alice.johnson@example.com");
+
+        // Verify that the patient is saved in the database
+        assertThat(addedPatientTO.getId()).isNotNull(); // Check if ID is assigned
+
+        PatientEntity savedPatientEntity = patientDao.findOne(addedPatientTO.getId());
+        assertThat(savedPatientEntity).isNotNull();
+        assertThat(savedPatientEntity.getFirstName()).isEqualTo("Alice");
+        assertThat(savedPatientEntity.getLastName()).isEqualTo("Johnson");
+        assertThat(savedPatientEntity.getEmail()).isEqualTo("alice.johnson@example.com");
+    }
+
 }

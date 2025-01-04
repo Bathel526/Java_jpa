@@ -3,9 +3,16 @@ package com.jpacourse.service;
 import com.jpacourse.dto.PatientTO;
 import com.jpacourse.persistence.entity.PatientEntity;
 
+import java.util.List;
+
 public interface PatientService
 {
-    public void deletePatientById(Long patientId);
+    void deletePatientById(Long patientId);
 
-    public PatientTO findPatientById(final Long patientId);
+    PatientTO findPatientById(final Long patientId);
+
+    List<PatientTO> findAllPatients();
+
+
+    PatientTO addPatient(PatientTO patientTO);
 }
