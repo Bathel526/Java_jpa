@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-@Transactional
+@Transactional // dostep do bazy danych mozna ja dac do metody lub klasy
 public class AddressServiceImpl implements AddressService
 {
     private final AddressDao addressDao;

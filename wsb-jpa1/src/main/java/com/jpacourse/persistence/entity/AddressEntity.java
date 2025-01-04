@@ -1,10 +1,7 @@
 package com.jpacourse.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -14,13 +11,39 @@ public class AddressEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false, length = 255)
 	private String city;
 
+	@Column(nullable = false, length = 255)
 	private String addressLine1;
 
+	@Column(nullable = false, length = 255)
 	private String addressLine2;
 
+	@Column(nullable = false, length = 255)
 	private String postalCode;
+
+	@ManyToMany(mappedBy = "addresses")
+	private List<PatientEntity> patients;
+
+	@ManyToMany(mappedBy = "addresses")
+	private List<DoctorEntity> doctors;
+
+	public List<DoctorEntity> getDoctors() {
+		return doctors;
+	}
+
+	public void setDoctors(List<DoctorEntity> doctors) {
+		this.doctors = doctors;
+	}
+
+	public List<PatientEntity> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(List<PatientEntity> patients) {
+		this.patients = patients;
+	}
 
 	public Long getId() {
 		return id;
