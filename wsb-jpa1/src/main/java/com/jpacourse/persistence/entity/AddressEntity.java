@@ -29,21 +29,7 @@ public class AddressEntity {
 	@ManyToMany(mappedBy = "addresses")
 	private List<DoctorEntity> doctors;
 
-	public List<DoctorEntity> getDoctors() {
-		return doctors;
-	}
-
-	public void setDoctors(List<DoctorEntity> doctors) {
-		this.doctors = doctors;
-	}
-
-	public List<PatientEntity> getPatients() {
-		return patients;
-	}
-
-	public void setPatients(List<PatientEntity> patients) {
-		this.patients = patients;
-	}
+	//Setters and Getters:
 
 	public Long getId() {
 		return id;
@@ -85,4 +71,19 @@ public class AddressEntity {
 		this.postalCode = postalCode;
 	}
 
+	public List<PatientEntity> getPatients() {
+		return patients;
+	}
+
+	public void setPatients(List<PatientEntity> patients) {
+		this.patients = patients;
+	}
+
+	public List<DoctorEntity> getDoctors() {
+		return doctors;
+	}
+
+	public void setDoctors(List<DoctorEntity> doctors) {
+		this.doctors = doctors;
+	}
 }

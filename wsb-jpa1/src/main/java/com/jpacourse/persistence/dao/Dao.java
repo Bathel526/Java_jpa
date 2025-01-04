@@ -1,6 +1,7 @@
 package com.jpacourse.persistence.dao;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface Dao<T, K extends Serializable> {
