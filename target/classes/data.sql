@@ -3,10 +3,10 @@ insert into address (id, address_line1, address_line2, city, postal_code)
 insert into address (id, address_line1, address_line2, city, postal_code)
             values (2,'ul. Tadeusza Kościuszki', '19/2', 'Breslau', '12-123');
 
-insert into doctor (first_name, last_name, telephone_number, email, doctor_number, specialization)
+insert into doctor (first_name, last_name, telephone_number, email, doctor_number, specialization, version)
 values
-    ('John', 'Smith', '111-222-333', 'JohnSmith@example.com', '2af3fas2', 'GP'),
-    ('Andrew', 'Andrzejewski', '222-333-444', 'AndrewAndrzejewski@example.com', '3afz3fa3', 'OCULIST');
+    ('John', 'Smith', '111-222-333', 'JohnSmith@example.com', '2af3fas2', 'GP', 0),
+    ('Andrew', 'Andrzejewski', '222-333-444', 'AndrewAndrzejewski@example.com', '3afz3fa3', 'OCULIST', 0);
 
 
 insert into doctor_to_address (doctor_id, address_id)

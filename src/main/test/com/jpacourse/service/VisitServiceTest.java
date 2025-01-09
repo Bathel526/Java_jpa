@@ -1,11 +1,5 @@
 package com.jpacourse.service;
 import com.jpacourse.dto.VisitSimpleTO;
-
-import com.jpacourse.persistence.dao.PatientDao;
-import com.jpacourse.persistence.dao.VisitDao;
-import com.jpacourse.persistence.entity.PatientEntity;
-import com.jpacourse.persistence.entity.VisitEntity;
-import com.jpacourse.persistence.enums.Gender;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

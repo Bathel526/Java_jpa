@@ -19,9 +19,6 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
-	@ManyToOne
-	VisitEntity visitEntity;
-
 	// Getters and Setters:
 
 	public Long getId() {
@@ -48,11 +45,4 @@ public class MedicalTreatmentEntity {
 		this.type = type;
 	}
 
-	public VisitEntity getVisitEntity() {
-		return visitEntity;
-	}
-
-	public void setVisitEntity(VisitEntity visitEntity) {
-		this.visitEntity = visitEntity;
-	}
 }

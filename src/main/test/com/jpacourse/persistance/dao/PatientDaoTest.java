@@ -1,5 +1,6 @@
 package com.jpacourse.persistance.dao;
 
+import com.jpacourse.persistence.dao.DoctorDao;
 import com.jpacourse.persistence.dao.PatientDao;
 import com.jpacourse.persistence.dao.VisitDao;
 import com.jpacourse.persistence.entity.DoctorEntity;
@@ -35,6 +36,9 @@ class PatientDaoTest {
     private EntityManager entityManager;
 
     @Autowired
+    private DoctorDao doctorDao;
+
+    @Autowired
     private VisitDao visitDao;
 
     private PatientEntity patient;
@@ -64,8 +68,8 @@ class PatientDaoTest {
         doctor.setEmail("dr.smith.jones@example.com");
         doctor.setTelephoneNumber("123456789");
 
-        entityManager.persist(patient);
-        entityManager.persist(doctor);
+        patientDao.save(patient);
+        doctorDao.save(doctor);
     }
 
     @Transactional

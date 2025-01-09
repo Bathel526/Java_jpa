@@ -7,7 +7,6 @@ import java.util.List;
 @Entity
 @Table(name = "DOCTOR")
 public class DoctorEntity {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -45,6 +44,10 @@ public class DoctorEntity {
 			inverseJoinColumns = @JoinColumn(name = "ADDRESS_ID")
 	)
 	private List<AddressEntity> addresses;
+
+	@Version
+	private int version;
+
 
 	// Setters and Getters:
 
@@ -119,4 +122,14 @@ public class DoctorEntity {
 	public void setAddresses(List<AddressEntity> addresses) {
 		this.addresses = addresses;
 	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+
 }

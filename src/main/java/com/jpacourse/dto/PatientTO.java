@@ -22,8 +22,6 @@ public class PatientTO
     private Gender gender;
 
     private List<VisitSimpleTO> visits;
-    
-    //private List<AddressTO> addresses;
 
     // Setters and Getters:
 
